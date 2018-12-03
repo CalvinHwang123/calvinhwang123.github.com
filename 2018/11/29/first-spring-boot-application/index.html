@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>第一个 Spring Boot APP | codingの鹿先生</title>
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="http://demo.sc.chinaz.com/Files/pic/iconsico/7141/r1.ico">
+  <link rel="alternate" href="/atom.xml" title="codingの鹿先生">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="http://demo.sc.chinaz.com/Files/pic/iconsico/7141/r1.ico">
+  <link rel="icon" href="http://demo.sc.chinaz.com/Files/pic/iconsico/7141/r1.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
+  
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+  
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2e5826bc4f1eaa4249a46634a9264c75";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+  
+</head>
+</html>
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href="/">codingの鹿先生</a>
+				<div class="menu">
+					<ul class="h-list">
+            
+    					
+    						<li>
+    							<a class="nav flat-box" href="https://calvinhwang123.github.io/">
+    								<i class="fas fa-home fa-fw"></i>&nbsp;主页
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="https://calvinhwang123.github.io/">
+    								<i class="fas fa-flask fa-fw"></i>&nbsp;项目
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="/">
+    								<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="/archives/">
+    								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="https://calvinhwang123.github.io/">
+    								<i class="fas fa-user fa-fw"></i>&nbsp;关于
+  								</a>
+  							</li>
+        			
+        		
+					</ul>
+					<div class="underline"></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search">
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+				<li class="s-top"><a class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a></li>
+				<li class="s-toc"><a class="fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          
+              
+                  <li>
+										<a class="nav  flat-box" href="https://calvinhwang123.github.io/">
+											<i class="fas fa-home fa-fw"></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="https://calvinhwang123.github.io/">
+											<i class="fas fa-flask fa-fw"></i>&nbsp;项目
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/">
+											<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/archives/">
+											<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="https://calvinhwang123.github.io/">
+											<i class="fas fa-user fa-fw"></i>&nbsp;关于
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post-first-spring-boot-application" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+    <section class="meta">
+        
+            <h1 class="title">第一个 Spring Boot APP</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2018-11-29
+        </time>
+        
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          </div>
+        
+
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        <a class="categories" href="/categories/随笔/">随笔</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="一、Spring-Boot-简介"><a href="#一、Spring-Boot-简介" class="headerlink" title="一、Spring Boot 简介"></a>一、Spring Boot 简介</h2><h3 id="1、产生背景"><a href="#1、产生背景" class="headerlink" title="1、产生背景"></a>1、产生背景</h3><p>Java EE 开发笨重、配置繁多、开发效率低下、部署流程复杂、第三方技术集成难度大</p>
+<a id="more"></a>
+<h3 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h3><ul>
+<li>Spring 全家桶时代。通过 Spring MVC 处理控制层，Spring 事务管理处理业务层，Spring Data 处理持久层，Spring 拥有一套完整的企业级 Java WEB 应用开发的解决方案。</li>
+<li>Spring Boot。目标是提供 Java EE 一站式解决方案。</li>
+<li>Spring Cloud。目标是提供分布式整体解决方案。（微服务架构风格）</li>
+</ul>
+<h3 id="3、优势"><a href="#3、优势" class="headerlink" title="3、优势"></a>3、优势</h3><ul>
+<li>快速创建独立运行的Spring项目以及与主流框架集成  –&gt; 各种 starter，暂且称为 <strong>场景启动器</strong></li>
+<li>使用嵌入式的Servlet容器（默认支持 Tomcat，Jetty 和 Undertow，也可自定义），应用无需打成WAR包（可以打成 jar 包并使用内置 WEB 容器运行）</li>
+<li>starters自动依赖与版本控制</li>
+<li>大量的自动配置，简化开发，也可修改默认值</li>
+<li>无需配置XML，无代码生成，开箱即用</li>
+<li>准生产环境的运行时应用监控 – 与云计算的天然集成</li>
+</ul>
+<h3 id="4、拓展：微服务架构风格"><a href="#4、拓展：微服务架构风格" class="headerlink" title="4、拓展：微服务架构风格"></a>4、拓展：微服务架构风格</h3><p>详见 微服务架构的倡导者 <strong>Martin Fowler</strong> 个人网站</p>
+<p><a href="https://martinfowler.com/microservices/" target="_blank" rel="noopener">微服务架构风格介绍</a></p>
+<blockquote>
+<p>简而言之，微服务架构风格是将单个应用程序开发为一套小型服务的方法，每个小型服务都在自己的流程中运行，并与轻量级机制（通常是HTTP资源API）进行通信。这些服务围绕业务功能构建，可通过全自动部署机制独立部署。这些服务至少集中管理，可以用不同的编程语言编写，并使用不同的数据存储技术。——詹姆斯刘易斯和马丁福勒</p>
+</blockquote>
+<blockquote>
+<p>In short, the microservice architectural style is an approach to developing a single application as a <strong>suite of small services</strong>, each <strong>running in its own process</strong> and communicating with lightweight mechanisms, often an HTTP resource API. These services are <strong>built around business capabilities</strong> and <strong>independently deployable</strong> by fully automated deployment machinery. There is a <strong>bare minimum of centralized management</strong> of these services, which may be written in different programming languages and use different data storage technologies.</p>
+<p>– James Lewis and Martin Fowler</p>
+</blockquote>
+<p><img src="first-spring-boot-application/微信截图_20181129203051.png" alt="微服务架构示意图"></p>
+<h3 id="5、总说"><a href="#5、总说" class="headerlink" title="5、总说"></a>5、总说</h3><p>Spring Boot 是 Pivotal 团队推出的 Java 开发框架。Spring Boot 使得开发者更轻易地开发出基于 Spring 的独立运行、生产级别的 WEB 应用。Spring Boot 为开发者整合了主流的第三方库，通过极少的配置，就能构建出一款企业级应用。</p>
+<p>总的说，Spring Boot 是用来简化 Spring应用开发，本着 <strong>约定大于配置</strong> 的原则，去繁从简， just run as spring boot app ,就能创建一个独立的，产品级别的应用。</p>
+<h2 id="二、入门小-Demo"><a href="#二、入门小-Demo" class="headerlink" title="二、入门小 Demo"></a>二、入门小 Demo</h2><h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><ul>
+<li><p>JDK 1.8</p>
+</li>
+<li><p>MAVEN 3.x</p>
+</li>
+<li><p>IDEA 2017.2.2 或 STS 3.9.x</p>
+</li>
+<li><p>Spring Boot 1.5.x 或 Spring Boot 2.1.0</p>
+<blockquote>
+<p>Spring Boot 2.1.x 要求 JDK 1.8+，Spring 5.1.x+，Tomcat 9，可以根据实际情况选用 Spring Boot 1.5.x 或者 Spring Boot 2.1.x</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2、IDEA-问个好"><a href="#2、IDEA-问个好" class="headerlink" title="2、IDEA 问个好"></a>2、IDEA 问个好</h3><blockquote>
+<p><del>以下是基于个人喜好修改的几项 IDEA 配置，觉得有用的可以参考下</del></p>
+<p><del><a href="file:///I:/20181129-first-spring-boot-application/annexs/IDEA%E5%BF%85%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9.txt" target="_blank" rel="noopener">IDEA Preferences</a></del></p>
+</blockquote>
+<p>首先是 New Project，前提是配置好了 Project SDK，即 JDK，并且保证在联网的环境下。<img src="first-spring-boot-application/微信截图_20181129204744.png" alt="New Project"></p>
+<p>其次是填写 Project Metadata，我们选择 Maven 工程，IDEA 将为我们生成 pom.xml 文件构建 Maven 工程。使用 Java 开发，package 方式为 jar 包。package 包名如果觉得过长可以修改下。<img src="first-spring-boot-application/微信截图_20181129205153.png" alt="Project Metadata"></p>
+<p>然后选择我们要添加的 dependences。因为我们是 WEB 入门小 demo，所以选择 web 依赖即可。Spring Boot 版本可以根据自身需要选择 2.x 或者 1.5x。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129205725.png" alt="Dependences"></p>
+<p>最后是确认项目名称和项目路径，然后点 finish 完成。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129210016.png" alt="Finish"></p>
+<p>以下是基于 IDEA MAVEN 构建的 Spring Boot 工程，如果略带强迫症的患者可以删除选中的几项无用配置文件</p>
+<p><img src="first-spring-boot-application/微信截图_20181129210428.png" alt="Raw Project"></p>
+<p>打开 pom.xml 文件，可以看到一个最简的 Spring Boot 引入了 starter-web 和 starter-test 两个依赖，还有一个 maven-plugin 插件（用于编译maven工程）</p>
+<p><img src="first-spring-boot-application/微信截图_20181129210713.png" alt="SIMPLE POM"></p>
+<p>在 pom.xml 文件内部，右键 diagrams 可以查看项目依赖树</p>
+<p><img src="first-spring-boot-application/微信截图_20181129211200.png" alt="DEPENDENCIES TREE"></p>
+<p><img src="first-spring-boot-application/_001first-spring-boot-app.png" alt="dependencies tree"></p>
+<p>既然我们编写的是 WEB 应用，需要编写 controller 层处理客户端请求</p>
+<p><img src="first-spring-boot-application/微信截图_20181129211947.png" alt="hello controller"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HelloController.java</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&#123;&quot;/&quot;, &quot;/hello&quot;&#125;)</span><br><span class="line">    public String greeting() &#123;</span><br><span class="line">        return &quot;Hello Spring Boot&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 Spring Boot 已经为我们创建了一个形如 XXXApplication 的启动类，带有 @SpringBootApplication 注解，并且有一个 main 方法。</p>
+<p>选择 IDEA main 方法左侧运行图标，以 run 方式启动</p>
+<p><img src="first-spring-boot-application/微信截图_20181129212113.png" alt="run application"></p>
+<p>在 console 中除了看到 Spring Boot 绚丽的图标外，我们看到应用已经运行在内置的Tomcat 的 8080 端口上了。<img src="first-spring-boot-application/微信截图_20181129212506.png" alt="console"></p>
+<p>最后是通过 Chrome 等浏览器访问 WEB 服务。可以看到 localhost:8080/ 和 localhost:8080/hello 被我们的 HelloController 处理了。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129212829.png" alt="chrome"></p>
+<p><img src="first-spring-boot-application/微信截图_20181129213006.png" alt="chrome2"></p>
+<p>当然我们也可以使用 PostMan 工具模拟客户端请求，测试一下。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129213230.png" alt="postman"></p>
+<h3 id="3、STS-问个好"><a href="#3、STS-问个好" class="headerlink" title="3、STS 问个好"></a>3、STS 问个好</h3><p>File / New / Spring Starter Project</p>
+<p><img src="first-spring-boot-application/new_project.png" alt="new project"></p>
+<p>填写好 project 相关信息，Next</p>
+<p><img src="first-spring-boot-application/微信截图_20181129221029.png" alt="next"></p>
+<p>还是选择 web dependency 就好，然后点击 finish</p>
+<p><img src="first-spring-boot-application/微信截图_20181129221141.png" alt="web"></p>
+<p>以下是 STS 构建的 Spring Boot 工程。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129221323.png" alt="spring boot"></p>
+<p>同样编写一个 HelloController 用于处理前端请求。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129221551.png" alt="hc"></p>
+<p>STS 运行 Spring Boot 应用的方式为：右键 Application 启动类，Run As / Spring Boot App。</p>
+<p><img src="first-spring-boot-application/run_as.png" alt="sping boot app"></p>
+<p>在 console 上可以看到 应用已经运行起来了。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129222026.png" alt="console"></p>
+<p>使用浏览器测试。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129222116.png" alt="test"></p>
+<h3 id="4、以-java-jar-方式运行"><a href="#4、以-java-jar-方式运行" class="headerlink" title="4、以 java -jar 方式运行"></a>4、以 java -jar 方式运行</h3><p>以下以 IDEA 为例演示 Spring Boot Maven jar 工程的打包，cmd 方式运行 WEB 应用。</p>
+<p>调出 Maven 面板</p>
+<p><img src="first-spring-boot-application/微信截图_20181129213442.png" alt="maven panel"></p>
+<p>找到 compile ，双击它</p>
+<p><img src="first-spring-boot-application/微信截图_20181129213746.png" alt="compile"></p>
+<p>compile 成功后，IEDA 在 target 目录下为我们生成了 project_name.jar 可执行 jar 包</p>
+<p><img src="first-spring-boot-application/微信截图_20181129213930.png" alt="jar"></p>
+<p>右键它，选择面板中的 show in explorer，在 Windows 的资源管理器路径下输入 cmd 三个字母</p>
+<p><img src="first-spring-boot-application/微信截图_20181129214220.png" alt="show"></p>
+<p><img src="first-spring-boot-application/微信截图_20181129214317.png" alt="cmd"></p>
+<p>最后在 cmd 下执行java -jar project_name.jar ，前提是停止了 IDEA 运行的 web 工程，否则会出现端口占用的问题。</p>
+<p><img src="first-spring-boot-application/微信截图_20181129214430.png" alt="cmd"></p>
+<p><img src="first-spring-boot-application/微信截图_20181129214622.png" alt="cmd result"></p>
+<p>由以上可见，我们使用 java -jar 命令也能在 cmd 上运行 jar 应用。</p>
+<h2 id="三、Spring-Boot-入口类探究"><a href="#三、Spring-Boot-入口类探究" class="headerlink" title="三、Spring Boot 入口类探究"></a>三、Spring Boot 入口类探究</h2><h3 id="1、入口类"><a href="#1、入口类" class="headerlink" title="1、入口类"></a>1、入口类</h3><p>程序从 main 方法开始执行，默认使用 SpringApplication.run() 加载主程序类</p>
+<h3 id="2、-SpringBootApplication"><a href="#2、-SpringBootApplication" class="headerlink" title="2、@SpringBootApplication"></a>2、@SpringBootApplication</h3><p>实际上是个组合注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123;</span><br><span class="line">		<span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),</span><br><span class="line">		<span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SpringBootApplication &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-SpringBootConfiguration"><a href="#2-1-SpringBootConfiguration" class="headerlink" title="2.1 @SpringBootConfiguration"></a>2.1 @SpringBootConfiguration</h4><p>其中，@SpringBootConfiguration 表示是 Spring 底层配置类，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SpringBootConfiguration &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-ComponentScan"><a href="#2-2-ComponentScan" class="headerlink" title="2.2 @ComponentScan"></a>2.2 @ComponentScan</h4><p>@ComponentScan 是个组件扫描注解</p>
+<h4 id="2-3-EnableAutoConfiguration"><a href="#2-3-EnableAutoConfiguration" class="headerlink" title="2.3 @EnableAutoConfiguration"></a>2.3 @EnableAutoConfiguration</h4><p>@EnableAutoConfiguration 是一个核心注解，表示允许 Spring Boot 完成自动配置功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(AutoConfigurationImportSelector.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableAutoConfiguration &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-1-AutoConfigurationPackage"><a href="#2-3-1-AutoConfigurationPackage" class="headerlink" title="2.3.1 @AutoConfigurationPackage"></a>2.3.1 @AutoConfigurationPackage</h5><p>其中 @AutoConfigurationPackage 通过导入一个 AutoConfigurationPackages.Registrar 注册类为程序指定了自动配置的包范围</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import</span>(AutoConfigurationPackages.Registrar.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AutoConfigurationPackage &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="first-spring-boot-application/微信截图_20181130001915.png" alt="register"></p>
+<p><img src="first-spring-boot-application/微信截图_20181130001106.png" alt="packagename"></p>
+<p> 由此可见，程序启动会扫描加载主程序类所在的包以及子包。这说明如果一个包位于主程序类所在包之外，是不会被 Spring 容器扫描实例化的。以下是简单的例子：</p>
+<p>AnotherController 位于 com.shinedeer.springboot 包之外</p>
+<p><img src="first-spring-boot-application/微信截图_20181130002413.png" alt="out"></p>
+<p>通过浏览器访问 localhost:8080/another 请求，结果返回 404。</p>
+<p><img src="first-spring-boot-application/微信截图_20181130002533.png" alt="404"></p>
+<h5 id="2-3-2-Import-AutoConfigurationImportSelector-class"><a href="#2-3-2-Import-AutoConfigurationImportSelector-class" class="headerlink" title="2.3.2 @Import(AutoConfigurationImportSelector.class)"></a>2.3.2 @Import(AutoConfigurationImportSelector.class)</h5><p>@Import 作用是导入所有自动配置场景</p>
+<p>AutoConfigurationImportSelector 会给容器中导入非常多的自动配置类，形如 <strong>XXXAutoConfiguration</strong> ，就是给容器中导入 starter 需要的组件并进行配置。 </p>
+<h2 id="四、相关-Demo"><a href="#四、相关-Demo" class="headerlink" title="四、相关 Demo"></a>四、相关 Demo</h2><ul>
+<li>本文 Demo <a href="https://github.com/CalvinHwang123/IdeaProjects/tree/master/_001first-spring-boot-app" target="_blank" rel="noopener">占位符</a></li>
+<li>Spring Boot Official Samples <a href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples" target="_blank" rel="noopener">Github</a></li>
+</ul>
+<h2 id="五、参考文献"><a href="#五、参考文献" class="headerlink" title="五、参考文献"></a>五、参考文献</h2><ul>
+<li><p>Spring Boot 官方 reference <a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started" target="_blank" rel="noopener">官网</a></p>
+</li>
+<li><p>尚硅谷 Spring Boot 核心技术篇 <a href="http://www.atguigu.com/" target="_blank" rel="noopener">官网</a></p>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+
+        </div>
+
+        <section class="meta">
+            <time class="time" itemprop="dateUpdated" datetime="2018-12-03T23:59:08+08:00" content="2018-12-03">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2018-12-03
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/blog/">blog</a>, <a class="tag" href="/tags/Hexo/">Hexo</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h4>
+                                <a href="/2018/12/03/hello-world/" rel="prev" title="Hello Material X">
+                                  
+                                      Hello Material X
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/blog/">blog</a>, <a class="tag" href="/tags/Hexo/">Hexo</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="http://yoursite.com/2018/12/03/hello-world/">Hello Material X</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+                    
+                        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
+                        <div class="subtitle">
+                          <h6><b>文明评论，请勿灌水。</b>为了便于区分和接收回复提醒，请您在留言时填写一下<b>昵称</b>和<b>邮箱</b>。
+                          不定期清理没有昵称和灌水的评论。</h6>
+                        <div>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                <i class="fas fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                    
+                
+            
+
+        </div></div></section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: '第一个 Spring Boot APP',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+  <section class="m_widget author">
+    
+      <div class="header">
+        <img class="avatar" src="http://wx1.sinaimg.cn/large/cd0e99a8ly8ffity0ezmrj20hk0hkgns.jpg">
+      </div>
+    
+    
+      <div class="content">
+        
+          <h2>codingの鹿先生</h2>
+        
+        
+          <p>我想变成风 去撩一撩你</p>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:1055202292@qq.com" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/calvinhwang123" class="social flat-box" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=366611432" class="social flat-box" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </section>
+
+
+    
+    
+        
+
+    
+    
+        <section class="m_widget categories">
+    <header class="header pure">
+        <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    </header>
+    <div class="content pure">
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/随笔/"><div class="name">随笔</div><div class="badge">2</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class="m_widget tagcloud">
+        <header class="header pure">
+            <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        </header>
+        <div class="content pure">
+            <a href="/tags/Hexo/" style="font-size: 14px; color: #999">Hexo</a> <a href="/tags/blog/" style="font-size: 14px; color: #999">blog</a>
+        </div>
+    </section>
+
+
+    
+    
+        
+    <section class="m_widget toc-wrapper">
+        <header class="header pure">
+            <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class="wrapper"><a class="s-toc rightBtn" title="固定到顶部" target="_blank" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+        </header>
+        <div class="content pure">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Spring-Boot-简介"><span class="toc-text">一、Spring Boot 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、产生背景"><span class="toc-text">1、产生背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、解决方案"><span class="toc-text">2、解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、优势"><span class="toc-text">3、优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、拓展：微服务架构风格"><span class="toc-text">4、拓展：微服务架构风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、总说"><span class="toc-text">5、总说</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、入门小-Demo"><span class="toc-text">二、入门小 Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、开发环境"><span class="toc-text">1、开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、IDEA-问个好"><span class="toc-text">2、IDEA 问个好</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、STS-问个好"><span class="toc-text">3、STS 问个好</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、以-java-jar-方式运行"><span class="toc-text">4、以 java -jar 方式运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Spring-Boot-入口类探究"><span class="toc-text">三、Spring Boot 入口类探究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、入口类"><span class="toc-text">1、入口类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、-SpringBootApplication"><span class="toc-text">2、@SpringBootApplication</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-SpringBootConfiguration"><span class="toc-text">2.1 @SpringBootConfiguration</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-ComponentScan"><span class="toc-text">2.2 @ComponentScan</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-EnableAutoConfiguration"><span class="toc-text">2.3 @EnableAutoConfiguration</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-AutoConfigurationPackage"><span class="toc-text">2.3.1 @AutoConfigurationPackage</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-Import-AutoConfigurationImportSelector-class"><span class="toc-text">2.3.2 @Import(AutoConfigurationImportSelector.class)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、相关-Demo"><span class="toc-text">四、相关 Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、参考文献"><span class="toc-text">五、参考文献</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+    
+        <section class="m_widget music">
+    <header class="header pure">
+        <div><i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+        <a class="rightBtn" title="打开博主的网易云音乐主页" target="_blank" rel="external nofollow noopener noreferrer" href="https://music.163.com/#/playlist?id=517431477"><i class="fas fa-external-link-square-alt fa-fw"></i></a>
+    </header>
+    <div class="content pure">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="450" src="//music.163.com/outchain/player?type=0&id=517431477&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class="m_widget links">
+    <header class="header pure">
+        <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+        
+            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:me@xaoxuu.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【codingの鹿先生】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
+        
+    </header>
+    <div class="content pure">
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" title="https://xaoxuu.com/blog" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com/blog">
+                    <div class="name">
+                        
+                            <img src="https://xaoxuu.com/assets/img/avatar.jpg">
+                        
+                        &nbsp;&nbsp;xaoxuu&#39;s blog
+                    </div>
+                </a></li>
+            
+        </ul>
+    </div>
+</section>
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:1055202292@qq.com" class="social fas fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/calvinhwang123" class="social fab fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://music.163.com/#/user/home?id=366611432" class="social fas fa-music flat-box" target="_blank" rel="external"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+        
+            <script>
+            var GUEST_INFO = ['nick','mail','link'];
+            var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+                return GUEST_INFO.indexOf(item) > -1
+            });
+            var notify = 'false' == true;
+            var verify = 'false' == true;
+            var valine = new Valine();
+            valine.init({
+                el: '#valine_container',
+                notify: notify,
+                verify: verify,
+                guest_info: guest_info,
+                appId: "DtrTjT4L20pTc9V0DBQ8Pdvm-gzGzoHsz",
+                appKey: "AHWyAPy0c6tHrNohGEcPjpMX",
+                placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+                pageSize:'10',
+                avatar:'mp',
+                lang:'zh-cn',
+                highlight:''
+            })
+            </script>
+        
+    
+
+
+
+
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+  function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function () {
+      entries.push( $(this).attr("id").trim() );
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+      .done(function (results) {
+        var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+        if (results.length === 0) {
+          $visitors.find(COUNT_CONTAINER_REF).text(0);
+          return;
+        }
+
+        for (var i = 0; i < results.length; i++) {
+          var item = results[i];
+          var url = item.get('url');
+          var time = item.get('time');
+          var element = document.getElementById(url);
+
+          $(element).find(COUNT_CONTAINER_REF).text(time);
+        }
+        for(var i = 0; i < entries.length; i++) {
+          var url = entries[i];
+          var element = document.getElementById(url);
+          var countSpan = $(element).find(COUNT_CONTAINER_REF);
+          if( countSpan.text() == '') {
+            countSpan.text(0);
+          }
+        }
+      })
+      .fail(function (object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      });
+  }
+
+  function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length > 0) {
+          var counter = results[0];
+          counter.fetchWhenSave(true);
+          counter.increment("time");
+          counter.save(null, {
+            success: function(counter) {
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            },
+            error: function(counter, error) {
+              console.log('Failed to save Visitor num, with error message: ' + error.message);
+            }
+          });
+        } else {
+          var newcounter = new Counter();
+          /* Set ACL */
+          var acl = new AV.ACL();
+          acl.setPublicReadAccess(true);
+          acl.setPublicWriteAccess(true);
+          newcounter.setACL(acl);
+          /* End Set ACL */
+          newcounter.set("title", title);
+          newcounter.set("url", url);
+          newcounter.set("time", 1);
+          newcounter.save(null, {
+            success: function(newcounter) {
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+            },
+            error: function(newcounter, error) {
+              console.log('Failed to create');
+            }
+          });
+        }
+      },
+      error: function(error) {
+        console.log('Error:' + error.code + " " + error.message);
+      }
+    });
+  }
+
+  $(function() {
+    var Counter = AV.Object.extend("Counter");
+    if ($('.leancloud_visitors').length == 1) {
+      addCount(Counter);
+    } else if ($('.post-title-link').length > 1) {
+      showTime(Counter);
+    }
+  });
+</script>
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

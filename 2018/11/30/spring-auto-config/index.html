@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Spring Boot 自动配置 | codingの鹿先生</title>
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/CalvinHwang123/learngit/master/deer.ico">
+  <link rel="alternate" href="/atom.xml" title="codingの鹿先生">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/CalvinHwang123/learngit/master/deer.ico">
+  <link rel="icon" href="https://raw.githubusercontent.com/CalvinHwang123/learngit/master/deer.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
+  
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+  
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2e5826bc4f1eaa4249a46634a9264c75";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+  
+</head>
+</html>
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href="/">codingの鹿先生</a>
+				<div class="menu">
+					<ul class="h-list">
+            
+    					
+    						<li>
+    							<a class="nav flat-box" href="https://calvinhwang123.github.io/">
+    								<i class="fas fa-home fa-fw"></i>&nbsp;主页
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="https://calvinhwang123.github.io/">
+    								<i class="fas fa-flask fa-fw"></i>&nbsp;项目
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="/">
+    								<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="/archives/">
+    								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+  								</a>
+  							</li>
+        			
+    						<li>
+    							<a class="nav flat-box" href="https://calvinhwang123.github.io/">
+    								<i class="fas fa-user fa-fw"></i>&nbsp;关于
+  								</a>
+  							</li>
+        			
+        		
+					</ul>
+					<div class="underline"></div>
+				</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search">
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+				<li class="s-top"><a class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a></li>
+				<li class="s-toc"><a class="fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+		<nav>
+      <ul>
+          
+              
+                  <li>
+										<a class="nav  flat-box" href="https://calvinhwang123.github.io/">
+											<i class="fas fa-home fa-fw"></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="https://calvinhwang123.github.io/">
+											<i class="fas fa-flask fa-fw"></i>&nbsp;项目
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/">
+											<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="/archives/">
+											<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a class="nav  flat-box" href="https://calvinhwang123.github.io/">
+											<i class="fas fa-user fa-fw"></i>&nbsp;关于
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class="container clearfix">
+        <div class="l_main">
+            <article id="post-spring-auto-config" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+    <section class="meta">
+        
+            <h1 class="title">Spring Boot 自动配置</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2018-11-30
+        </time>
+        
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          </div>
+        
+
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        <a class="categories" href="/categories/Spring-Boot/">Spring Boot</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="一、-EnableAutoConfiguration-与自动配置"><a href="#一、-EnableAutoConfiguration-与自动配置" class="headerlink" title="一、@EnableAutoConfiguration 与自动配置"></a>一、@EnableAutoConfiguration 与自动配置</h2><p>@EnableAutoConfiguration 是 @AutoConfigurationPackage 和 @Import(AutoConfigurationImportSelector.class)的混合注解。</p>
+<a id="more"></a>
+<p>其中，@AutoConfigurationPackage  通过导入一个 AutoConfigurationPackages.Registrar 注册类为程序指定了自动配置的包范围为：<strong>XXXApplication</strong> 所在包及其子包，如果一个类位于<strong>XXXApplication</strong> 所在包之外，是不会被 Spring Boot 自动配置的。</p>
+<p>@Import(AutoConfigurationImportSelector.class) 导入的AutoConfigurationImportSelector 作为自动配置选择器，在程序运行时决定导入哪些自动配置类，即形如 <strong>XXXAutoConfiguraion</strong> 的自动配置类。</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130194705.png" title="auto configuration">
+<p>在 AutoConfigurationImportSelector 的 getCandidateConfigurations() 方法中，我们可以看到通过一个 SpringFactoriesLoader 去返回 configurations 数组，我们来看 loadFactoryNames() 方法：</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130195233.png" title="factory name">
+<p>我们发现 classLoader 加载自动配置资源的路径为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String FACTORIES_RESOURCE_LOCATION = <span class="string">"META-INF/spring.factories"</span>;</span><br></pre></td></tr></table></figure>
+<p>打开该文件如下：</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130195640.png" title="factories">
+<p>为了验证 Spring Boot 就是从该 spring.factories 文件加载 自动配置的，我们 F6 一下返回configurations 数组：</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130195805.png" title="config array">
+<p>通过调试我们可以得出结论：Spring Boot 通过 @EnableAutoConfiguration  注解读取spring.factories 文件，完成了默认自动配置功能，这些自动配置类会在容器中生效，省去开发者手动配置的麻烦。</p>
+<h2 id="二、-配置文件与-YAML"><a href="#二、-配置文件与-YAML" class="headerlink" title="二、 配置文件与 YAML"></a>二、 配置文件与 YAML</h2><h3 id="2-1-全局配置文件"><a href="#2-1-全局配置文件" class="headerlink" title="2.1 全局配置文件"></a>2.1 全局配置文件</h3><p>Spring Boot 全局配置文件命名为 application.properties 或者 application.yml.</p>
+<p>配置文件可以放在 src/main/resources 或者类路径/config 下，当然还有其他位置，只是加载的顺序不同。</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130201801.png" title="app config">
+<p>使用配置文件可以对一些默认自动配置的值进行修改，如 context-path、port 等。</p>
+<h3 id="2-2-YAML"><a href="#2-2-YAML" class="headerlink" title="2.2 YAML"></a>2.2 YAML</h3><p>.yml 是 YAML (YAML Ain’t Markup Language) 语言的文件，以数据为中心，比 JSON、XML 等更适合做配置文件。YAML具体的语法规范可以参考<a href="http://www.yaml.org" rel="external nofollow noopener noreferrer" target="_blank">官网</a></p>
+<h4 id="2-2-1-YAML-基本语法"><a href="#2-2-1-YAML-基本语法" class="headerlink" title="2.2.1 YAML 基本语法"></a>2.2.1 YAML 基本语法</h4><ul>
+<li>使用缩进进行层级关系，键值对之间必须带空格</li>
+<li>缩进时不允许使用 TAB 键，只允许 Space 即空格键</li>
+<li>缩进空格数量不重要，相同层级元素左对齐即可。（约定俗成使用 2 个空格）</li>
+<li>大小写敏感</li>
+</ul>
+<h4 id="2-2-2-支持三种数据结构"><a href="#2-2-2-支持三种数据结构" class="headerlink" title="2.2.2 支持三种数据结构"></a>2.2.2 支持三种数据结构</h4><ul>
+<li>对象：键值对的集合，或者称为 MAP</li>
+<li>数组：一组按次序排列的值</li>
+<li>字面量：包括字符串，数字，布尔值和日期等</li>
+</ul>
+<h4 id="2-2-3-属性值注入例子"><a href="#2-2-3-属性值注入例子" class="headerlink" title="2.2.3 属性值注入例子"></a>2.2.3 属性值注入例子</h4><p>以下我们通过 @ConfigurationProperties 和 @Value 分别实现从配置文件读取属性注入到程序中。</p>
+<p>首先创建实体类 Person 和 Dog</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"person"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Boolean isBoss;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, Object&gt; map;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Object&gt; list;</span><br><span class="line">    <span class="keyword">private</span> Dog dog;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">getBoss</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isBoss;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBoss</span><span class="params">(Boolean boss)</span> </span>&#123;</span><br><span class="line">        isBoss = boss;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMap</span><span class="params">(Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.map = map;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Object&gt; <span class="title">getList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setList</span><span class="params">(List&lt;Object&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.list = list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dog <span class="title">getDog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dog;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDog</span><span class="params">(Dog dog)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dog = dog;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在我们添加 @ConfigurationProperties 注解时，IDEA 智能提示我们尚未导入 spring-boot-configuration-processor 依赖。所以在 pom.xml 下加入</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130205702.png" title="depend">
+<p>这里先以 properties 文件写入属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server.port=8081</span><br><span class="line">server.servlet.context-path=/hello</span><br><span class="line"></span><br><span class="line">person.name=张三</span><br><span class="line">person.boss=false</span><br><span class="line">person.birthday=1995/01/01</span><br><span class="line">person.map.k1=v1</span><br><span class="line">person.map.k2=100</span><br><span class="line">person.map.k3=true</span><br><span class="line">person.list=1,true,hello</span><br><span class="line">person.dog.name=Rookie</span><br><span class="line">person.dog.age=2</span><br></pre></td></tr></table></figure>
+<p>最后在 test 包下进行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> Person person;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(person);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>debug 运行后得到如下结果</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130212824.png" title="debug">
+<p>相应的 yml 格式如下</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">李四</span></span><br><span class="line"><span class="attr">  boss:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  birthday:</span> <span class="number">2000</span><span class="string">/1/1</span></span><br><span class="line"><span class="attr">  map:</span> <span class="string">&#123;</span> <span class="attr">k1:</span> <span class="string">v1,</span> <span class="attr">k2:</span> <span class="number">100</span><span class="string">,</span> <span class="attr">k3:</span> <span class="literal">false</span> <span class="string">&#125;</span></span><br><span class="line"><span class="attr">  list:</span> <span class="number">1</span><span class="string">,</span> <span class="string">java,</span> <span class="string">你好,</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  dog:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Tom</span></span><br><span class="line"><span class="attr">    age:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>以上演示的是 list 的行内写法，缩进写法如下</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">list:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="number">1</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">Java</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">你好</span></span><br><span class="line"><span class="bullet">  -</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>我们注意到 application.properties 或 application.yml 都是全局配置文件，person 应该写在一个独立的 person.properties 比较合适，所以我们新建一个 properties 文件，并且为 Person 加上一个注解 @PropertySource 指定资源路径</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"person"</span>)</span><br><span class="line"><span class="meta">@PropertySource</span>(value = <span class="string">"classpath:person.properties"</span>) <span class="comment">// 这里 person.yml 可以不？</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后测试一下</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130214246.png" title="pro">
+<p>可以看到虽然属性值成功注入到 Person 组件了，但是从 properties 文件读取的值出现了中文乱码。这是由于 <strong>IDEA</strong> 使用 UTF-8 作为字符集，但是 properties 写入文件存的是 ASCII 编码，所以需要修改 IDEA properties 设置</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130214818.png" title="code">
+<p>重新编写 properties 文件，再次运行，发现乱码得到解决</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130215044.png" title="luanma">
+<p>我们也可以使用 @Value 注解实现属性值的注入</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181130215950.png" title="value">
+<p>如果我们只是在某个业务逻辑中需要获取以下配置文件中的某项值，使用 @Value 就可以了，如果专门写了一个 JavaBean 来和配置文件映射，直接使用 @ConfigurationProperties 会方便很多。</p>
+<h3 id="2-3-多-Profile-文件"><a href="#2-3-多-Profile-文件" class="headerlink" title="2.3 多 Profile 文件"></a>2.3 多 Profile 文件</h3><p>我们在编写主配置文件时，文件名可以是 application-{profile}-properties/yml</p>
+<p>默认使用的是 application.properties/yml</p>
+<p>为了更方便的切换，我们可以使用 yml 的多文档块方式 —</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8080</span> <span class="comment"># 默认端口</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span></span><br><span class="line"><span class="attr">    active:</span> <span class="string">dev</span> <span class="comment"># 激活开发环境</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span> <span class="string">dev</span> <span class="comment"># 指定是开发环境</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8082</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span> <span class="string">test</span> <span class="comment"># 指定是测试环境</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8083</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span> <span class="string">prod</span> <span class="comment"># 指定是生产环境</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、加载顺序"><a href="#三、加载顺序" class="headerlink" title="三、加载顺序"></a>三、加载顺序</h2><p>Spring Boot 启动会扫描以下位置的 application.properties 或者 application.yml 文件作为 Spring Boot 的默认配置文件：</p>
+<ul>
+<li>file:./config/ </li>
+<li>file:./ </li>
+<li>classpath:/config/ </li>
+<li>classpath:/</li>
+</ul>
+<p>以上是按照优先级从高到低的顺序，所有位置的文件都会被加载，高优先 级配置内容会覆盖低优先级配置内容。</p>
+<p>我们也可以通过配置spring.config.location来改变默认配置。</p>
+<p>以下我们通过简单例子来论证以上观点。</p>
+<img src="/2018/11/30/spring-auto-config/微信截图_20181201213250.png" title="port">
+<p>我们在四个文件都指定了 server port ，分别为 8081，8082，8083 和 8084，而最后生效的是 8081，这说明 Spring Boot 优先加载 file:./config 下的配置文件</p>
+<h2 id="四、配置原理"><a href="#四、配置原理" class="headerlink" title="四、配置原理"></a>四、配置原理</h2><p>1、可以查看HttpEncodingAutoConfiguration </p>
+<p>2、通用模式 </p>
+<p>– xxxAutoConfiguration：自动配置类 </p>
+<p>– xxxProperties：属性配置类 </p>
+<p>– yml/properties文件中能配置的值就来源于[属性配置类] </p>
+<p>3、几个重要注解 </p>
+<p>– @Bean </p>
+<p>– @Conditional </p>
+<p>4、–debug=true 查看详细的自动配置报告</p>
+<p>精髓</p>
+<p>1）、Spring Boot 启动会加载大量的自动配置类</p>
+<p>2）、我们看我们需要的功能有没有 Spring Boot 默认写好的自动配置类；<br>3）、我们再来看这个自动配置类中到底配置了哪些组件；（只要我们要用的组件有，我们就不需要再来配置了）</p>
+<p>4）、给容器中自动配置类添加组件的时候，会从 properties 类中获取某些属性。我们就可以在配置文件中指定这 些属性的值；</p>
+<p>@Conditional 扩展</p>
+<ul>
+<li>@Conditional扩展注解 作用（判断是否满足当前指定条件） </li>
+<li>@ConditionalOnJava 系统的java版本是否符合要求 </li>
+<li>@ConditionalOnBean 容器中存在指定Bean</li>
+<li>@ConditionalOnMissingBean 容器中不存在指定Bean </li>
+<li>@ConditionalOnExpression 满足SpEL表达式指定 </li>
+<li>@ConditionalOnClass 系统中有指定的类 </li>
+<li>@ConditionalOnMissingClass 系统中没有指定的类 </li>
+<li>@ConditionalOnSingleCandidate 容器中只有一个指定的Bean，或者这个Bean是首选Bean</li>
+<li>@ConditionalOnProperty 系统中指定的属性是否有指定的值 </li>
+<li>@ConditionalOnResource 类路径下是否存在指定资源文件 </li>
+<li>@ConditionalOnWebApplication 当前是web环境 </li>
+<li>@ConditionalOnNotWebApplication 当前不是web环境 </li>
+<li>@ConditionalOnJndi JNDI存在指定项</li>
+</ul>
+<h2 id="五、本文-Demo"><a href="#五、本文-Demo" class="headerlink" title="五、本文 Demo"></a>五、本文 Demo</h2><p><a href="https://github.com/CalvinHwang123/IdeaProjects/tree/master/_002-spring-boot-autoconfig" rel="external nofollow noopener noreferrer" target="_blank">占位符</a></p>
+<h2 id="六、参考文献"><a href="#六、参考文献" class="headerlink" title="六、参考文献"></a>六、参考文献</h2><ul>
+<li>尚硅谷 Spring Boot 核心技术篇 <a href="http://www.atguigu.com/" rel="external nofollow noopener noreferrer" target="_blank">官网</a></li>
+</ul>
+
+        </div>
+
+        <section class="meta">
+            <time class="time" itemprop="dateUpdated" datetime="2018-12-04T23:53:02+08:00" content="2018-12-04">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2018-12-04
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/Spring-Boot/">Spring Boot</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/11/29/first-spring-boot-application/" rel="prev" title="第一个 Spring Boot APP">
+                                    
+                                        第一个 Spring Boot APP
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/Spring-Boot/">Spring Boot</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://calvinhwang123.github.io/2018/11/29/first-spring-boot-application/">第一个 Spring Boot APP</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+                    
+                        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
+                        <div class="subtitle">
+                          <h6><b>文明评论，请勿灌水。</b>为了便于区分和接收回复提醒，请您在留言时填写一下<b>昵称</b>和<b>邮箱</b>。
+                          不定期清理没有昵称和灌水的评论。</h6>
+                        <div>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                <i class="fas fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                    
+                
+            
+
+        </div></div></section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'Spring Boot 自动配置',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class="l_side">
+            
+    
+        
+  <section class="m_widget author">
+    
+      <div class="header">
+        <img class="avatar" src="http://wx1.sinaimg.cn/large/cd0e99a8ly8ffity0ezmrj20hk0hkgns.jpg">
+      </div>
+    
+    
+      <div class="content">
+        
+          <h2>codingの鹿先生</h2>
+        
+        
+          <p>我想变成风 去撩一撩你</p>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:1055202292@qq.com" class="social flat-box" target="_blank" rel="external nofollow noopener noreferrer"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/calvinhwang123" class="social flat-box" target="_blank" rel="external nofollow noopener noreferrer"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=366611432" class="social flat-box" target="_blank" rel="external nofollow noopener noreferrer"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </section>
+
+
+    
+    
+        
+
+    
+    
+        <section class="m_widget categories">
+    <header class="header pure">
+        <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    </header>
+    <div class="content pure">
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/Spring-Boot/"><div class="name">Spring Boot</div><div class="badge">2</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
+
+    
+    
+        
+    <section class="m_widget tagcloud">
+        <header class="header pure">
+            <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        </header>
+        <div class="content pure">
+            <a href="/tags/Spring-Boot/" style="font-size: 14px; color: #999">Spring Boot</a>
+        </div>
+    </section>
+
+
+    
+    
+        
+    <section class="m_widget toc-wrapper">
+        <header class="header pure">
+            <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class="wrapper"><a class="s-toc rightBtn" title="固定到顶部" target="_blank" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+        </header>
+        <div class="content pure">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-EnableAutoConfiguration-与自动配置"><span class="toc-text">一、@EnableAutoConfiguration 与自动配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-配置文件与-YAML"><span class="toc-text">二、 配置文件与 YAML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-全局配置文件"><span class="toc-text">2.1 全局配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-YAML"><span class="toc-text">2.2 YAML</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-YAML-基本语法"><span class="toc-text">2.2.1 YAML 基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-支持三种数据结构"><span class="toc-text">2.2.2 支持三种数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-属性值注入例子"><span class="toc-text">2.2.3 属性值注入例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-多-Profile-文件"><span class="toc-text">2.3 多 Profile 文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、加载顺序"><span class="toc-text">三、加载顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、配置原理"><span class="toc-text">四、配置原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、本文-Demo"><span class="toc-text">五、本文 Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、参考文献"><span class="toc-text">六、参考文献</span></a></li></ol>
+        </div>
+    </section>
+
+
+    
+    
+        <section class="m_widget music">
+    <header class="header pure">
+        <div><i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+        <a class="rightBtn" title="打开博主的网易云音乐主页" target="_blank" rel="external nofollow noopener noreferrer" href="https://music.163.com/#/playlist?id=517431477"><i class="fas fa-external-link-square-alt fa-fw"></i></a>
+    </header>
+    <div class="content pure">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="450" src="//music.163.com/outchain/player?type=0&id=517431477&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class="m_widget links">
+    <header class="header pure">
+        <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+        
+            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:me@xaoxuu.com?subject=交换友链&body=你好，我想和你交换友链，我已经将【codingの鹿先生】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
+        
+    </header>
+    <div class="content pure">
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" title="https://xaoxuu.com/blog" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com/blog">
+                    <div class="name">
+                        
+                            <img src="https://xaoxuu.com/assets/img/avatar.jpg">
+                        
+                        &nbsp;&nbsp;xaoxuu&#39;s blog
+                    </div>
+                </a></li>
+            
+        </ul>
+    </div>
+</section>
+
+    
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:1055202292@qq.com" class="social fas fa-envelope flat-box" target="_blank" rel="external nofollow noopener noreferrer"></a>
+              
+          
+              
+                  <a href="https://github.com/calvinhwang123" class="social fab fa-github flat-box" target="_blank" rel="external nofollow noopener noreferrer"></a>
+              
+          
+              
+                  <a href="https://music.163.com/#/user/home?id=366611432" class="social fas fa-music flat-box" target="_blank" rel="external nofollow noopener noreferrer"></a>
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses" rel="external nofollow noopener noreferrer">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename" rel="external nofollow noopener noreferrer">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+    
+    
+    
+        
+            <script>
+            var GUEST_INFO = ['nick','mail','link'];
+            var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+                return GUEST_INFO.indexOf(item) > -1
+            });
+            var notify = 'false' == true;
+            var verify = 'false' == true;
+            var valine = new Valine();
+            valine.init({
+                el: '#valine_container',
+                notify: notify,
+                verify: verify,
+                guest_info: guest_info,
+                appId: "DtrTjT4L20pTc9V0DBQ8Pdvm-gzGzoHsz",
+                appKey: "AHWyAPy0c6tHrNohGEcPjpMX",
+                placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+                pageSize:'10',
+                avatar:'mp',
+                lang:'zh-cn',
+                highlight:''
+            })
+            </script>
+        
+    
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>

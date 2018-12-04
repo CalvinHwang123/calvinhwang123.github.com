@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://calvinhwang123.github.io/"/>
   <updated>2018-12-03T14:38:49.936Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://calvinhwang123.github.io/</id>
   
   <author>
     <name>John Doe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello Material X</title>
-    <link href="http://yoursite.com/2018/12/03/hello-world/"/>
-    <id>http://yoursite.com/2018/12/03/hello-world/</id>
+    <link href="https://calvinhwang123.github.io/2018/12/03/hello-world/"/>
+    <id>https://calvinhwang123.github.io/2018/12/03/hello-world/</id>
     <published>2018-12-02T16:00:00.000Z</published>
     <updated>2018-12-03T14:38:49.936Z</updated>
     
@@ -31,19 +31,19 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="https://calvinhwang123.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+      <category term="blog" scheme="https://calvinhwang123.github.io/tags/blog/"/>
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="https://calvinhwang123.github.io/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>第一个 Spring Boot APP</title>
-    <link href="http://yoursite.com/2018/11/29/first-spring-boot-application/"/>
-    <id>http://yoursite.com/2018/11/29/first-spring-boot-application/</id>
+    <link href="https://calvinhwang123.github.io/2018/11/29/first-spring-boot-application/"/>
+    <id>https://calvinhwang123.github.io/2018/11/29/first-spring-boot-application/</id>
     <published>2018-11-28T16:00:00.000Z</published>
     <updated>2018-12-04T12:00:58.764Z</updated>
     
@@ -55,10 +55,10 @@
     
     </summary>
     
-      <category term="Spring Boot" scheme="http://yoursite.com/categories/Spring-Boot/"/>
+      <category term="Spring Boot" scheme="https://calvinhwang123.github.io/categories/Spring-Boot/"/>
     
     
-      <category term="Spring Boot" scheme="http://yoursite.com/tags/Spring-Boot/"/>
+      <category term="Spring Boot" scheme="https://calvinhwang123.github.io/tags/Spring-Boot/"/>
     
   </entry>
   

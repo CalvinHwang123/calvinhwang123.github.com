@@ -210,7 +210,6 @@
 <p>In short, the microservice architectural style is an approach to developing a single application as a <strong>suite of small services</strong>, each <strong>running in its own process</strong> and communicating with lightweight mechanisms, often an HTTP resource API. These services are <strong>built around business capabilities</strong> and <strong>independently deployable</strong> by fully automated deployment machinery. There is a <strong>bare minimum of centralized management</strong> of these services, which may be written in different programming languages and use different data storage technologies.</p>
 <p>– James Lewis and Martin Fowler</p>
 </blockquote>
-<p><img src="first-spring-boot-application/微信截图_20181129203051.png" alt="微服务架构示意图"></p>
 <img src="/2018/11/29/first-spring-boot-application/微信截图_20181129203051.png" title="微服务架构示意图">
 <h3 id="5、总说"><a href="#5、总说" class="headerlink" title="5、总说"></a>5、总说</h3><p>Spring Boot 是 Pivotal 团队推出的 Java 开发框架。Spring Boot 使得开发者更轻易地开发出基于 Spring 的独立运行、生产级别的 WEB 应用。Spring Boot 为开发者整合了主流的第三方库，通过极少的配置，就能构建出一款企业级应用。</p>
 <p>总的说，Spring Boot 是用来简化 Spring应用开发，本着 <strong>约定大于配置</strong> 的原则，去繁从简， just run as spring boot app ,就能创建一个独立的，产品级别的应用。</p>
@@ -231,60 +230,63 @@
 <p><del>以下是基于个人喜好修改的几项 IDEA 配置，觉得有用的可以参考下</del></p>
 <p><del><a href="file:///I:/20181129-first-spring-boot-application/annexs/IDEA%E5%BF%85%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9.txt" target="_blank" rel="noopener">IDEA Preferences</a></del></p>
 </blockquote>
-<p>首先是 New Project，前提是配置好了 Project SDK，即 JDK，并且保证在联网的环境下。<img src="first-spring-boot-application/微信截图_20181129204744.png" alt="New Project"></p>
-<p>其次是填写 Project Metadata，我们选择 Maven 工程，IDEA 将为我们生成 pom.xml 文件构建 Maven 工程。使用 Java 开发，package 方式为 jar 包。package 包名如果觉得过长可以修改下。<img src="first-spring-boot-application/微信截图_20181129205153.png" alt="Project Metadata"></p>
+<p>首先是 New Project，前提是配置好了 Project SDK，即 JDK，并且保证在联网的环境下。</p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129204744.png" title="New Project">
+<p>其次是填写 Project Metadata，我们选择 Maven 工程，IDEA 将为我们生成 pom.xml 文件构建 Maven 工程。使用 Java 开发，package 方式为 jar 包。package 包名如果觉得过长可以修改下。</p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129205153.png" title="Project Metadata">
 <p>然后选择我们要添加的 dependences。因为我们是 WEB 入门小 demo，所以选择 web 依赖即可。Spring Boot 版本可以根据自身需要选择 2.x 或者 1.5x。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129205725.png" alt="Dependences"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129205725.png" title="Dependences">
 <p>最后是确认项目名称和项目路径，然后点 finish 完成。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129210016.png" alt="Finish"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129210016.png" title="Finish">
 <p>以下是基于 IDEA MAVEN 构建的 Spring Boot 工程，如果略带强迫症的患者可以删除选中的几项无用配置文件</p>
-<p><img src="first-spring-boot-application/微信截图_20181129210428.png" alt="Raw Project"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129210428.png" title="Raw Project">
 <p>打开 pom.xml 文件，可以看到一个最简的 Spring Boot 引入了 starter-web 和 starter-test 两个依赖，还有一个 maven-plugin 插件（用于编译maven工程）</p>
-<p><img src="first-spring-boot-application/微信截图_20181129210713.png" alt="SIMPLE POM"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129210713.png" title="SIMPLE POM">
 <p>在 pom.xml 文件内部，右键 diagrams 可以查看项目依赖树</p>
-<p><img src="first-spring-boot-application/微信截图_20181129211200.png" alt="DEPENDENCIES TREE"></p>
-<p><img src="first-spring-boot-application/_001first-spring-boot-app.png" alt="dependencies tree"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129211200.png" title="DEPENDENCIES TREE">
+<img src="/2018/11/29/first-spring-boot-application/001first-spring-boot-app.png" title="dependencies tree">
 <p>既然我们编写的是 WEB 应用，需要编写 controller 层处理客户端请求</p>
-<p><img src="first-spring-boot-application/微信截图_20181129211947.png" alt="hello controller"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129211947.png" title="hello controller">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HelloController.java</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&#123;&quot;/&quot;, &quot;/hello&quot;&#125;)</span><br><span class="line">    public String greeting() &#123;</span><br><span class="line">        return &quot;Hello Spring Boot&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到 Spring Boot 已经为我们创建了一个形如 XXXApplication 的启动类，带有 @SpringBootApplication 注解，并且有一个 main 方法。</p>
 <p>选择 IDEA main 方法左侧运行图标，以 run 方式启动</p>
-<p><img src="first-spring-boot-application/微信截图_20181129212113.png" alt="run application"></p>
-<p>在 console 中除了看到 Spring Boot 绚丽的图标外，我们看到应用已经运行在内置的Tomcat 的 8080 端口上了。<img src="first-spring-boot-application/微信截图_20181129212506.png" alt="console"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129212113.png" title="run application">
+<p>在 console 中除了看到 Spring Boot 绚丽的图标外，我们看到应用已经运行在内置的Tomcat 的 8080 端口上了。</p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129212506.png" title="console">
 <p>最后是通过 Chrome 等浏览器访问 WEB 服务。可以看到 localhost:8080/ 和 localhost:8080/hello 被我们的 HelloController 处理了。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129212829.png" alt="chrome"></p>
-<p><img src="first-spring-boot-application/微信截图_20181129213006.png" alt="chrome2"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129212829.png" title="chrome">
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129213006.png" title="chrome2">
 <p>当然我们也可以使用 PostMan 工具模拟客户端请求，测试一下。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129213230.png" alt="postman"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129213230.png" title="postman">
 <h3 id="3、STS-问个好"><a href="#3、STS-问个好" class="headerlink" title="3、STS 问个好"></a>3、STS 问个好</h3><p>File / New / Spring Starter Project</p>
-<p><img src="first-spring-boot-application/new_project.png" alt="new project"></p>
+<img src="/2018/11/29/first-spring-boot-application/new_project.png" title="new project">
 <p>填写好 project 相关信息，Next</p>
-<p><img src="first-spring-boot-application/微信截图_20181129221029.png" alt="next"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129221029.png" title="next">
 <p>还是选择 web dependency 就好，然后点击 finish</p>
-<p><img src="first-spring-boot-application/微信截图_20181129221141.png" alt="web"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129221141.png" title="web">
 <p>以下是 STS 构建的 Spring Boot 工程。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129221323.png" alt="spring boot"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129221323.png" title="spring boot">
 <p>同样编写一个 HelloController 用于处理前端请求。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129221551.png" alt="hc"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129221551.png" title="hc">
 <p>STS 运行 Spring Boot 应用的方式为：右键 Application 启动类，Run As / Spring Boot App。</p>
-<p><img src="first-spring-boot-application/run_as.png" alt="sping boot app"></p>
+<img src="/2018/11/29/first-spring-boot-application/run_as.png" title="sping boot app">
 <p>在 console 上可以看到 应用已经运行起来了。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129222026.png" alt="console"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129222026.png" title="console">
 <p>使用浏览器测试。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129222116.png" alt="test"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129222116.png" title="test">
 <h3 id="4、以-java-jar-方式运行"><a href="#4、以-java-jar-方式运行" class="headerlink" title="4、以 java -jar 方式运行"></a>4、以 java -jar 方式运行</h3><p>以下以 IDEA 为例演示 Spring Boot Maven jar 工程的打包，cmd 方式运行 WEB 应用。</p>
 <p>调出 Maven 面板</p>
-<p><img src="first-spring-boot-application/微信截图_20181129213442.png" alt="maven panel"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129213442.png" title="maven panel">
 <p>找到 compile ，双击它</p>
-<p><img src="first-spring-boot-application/微信截图_20181129213746.png" alt="compile"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129213746.png" title="compile">
 <p>compile 成功后，IEDA 在 target 目录下为我们生成了 project_name.jar 可执行 jar 包</p>
-<p><img src="first-spring-boot-application/微信截图_20181129213930.png" alt="jar"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129213930.png" title="jar">
 <p>右键它，选择面板中的 show in explorer，在 Windows 的资源管理器路径下输入 cmd 三个字母</p>
-<p><img src="first-spring-boot-application/微信截图_20181129214220.png" alt="show"></p>
-<p><img src="first-spring-boot-application/微信截图_20181129214317.png" alt="cmd"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129214220.png" title="show">
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129214317.png" title="cmd">
 <p>最后在 cmd 下执行java -jar project_name.jar ，前提是停止了 IDEA 运行的 web 工程，否则会出现端口占用的问题。</p>
-<p><img src="first-spring-boot-application/微信截图_20181129214430.png" alt="cmd"></p>
-<p><img src="first-spring-boot-application/微信截图_20181129214622.png" alt="cmd result"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129214430.png" title="cmd">
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181129214622.png" title="cmd result">
 <p>由以上可见，我们使用 java -jar 命令也能在 cmd 上运行 jar 应用。</p>
 <h2 id="三、Spring-Boot-入口类探究"><a href="#三、Spring-Boot-入口类探究" class="headerlink" title="三、Spring Boot 入口类探究"></a>三、Spring Boot 入口类探究</h2><h3 id="1、入口类"><a href="#1、入口类" class="headerlink" title="1、入口类"></a>1、入口类</h3><p>程序从 main 方法开始执行，默认使用 SpringApplication.run() 加载主程序类</p>
 <h3 id="2、-SpringBootApplication"><a href="#2、-SpringBootApplication" class="headerlink" title="2、@SpringBootApplication"></a>2、@SpringBootApplication</h3><p>实际上是个组合注解：</p>
@@ -296,13 +298,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(AutoConfigurationImportSelector.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableAutoConfiguration &#123;&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="2-3-1-AutoConfigurationPackage"><a href="#2-3-1-AutoConfigurationPackage" class="headerlink" title="2.3.1 @AutoConfigurationPackage"></a>2.3.1 @AutoConfigurationPackage</h5><p>其中 @AutoConfigurationPackage 通过导入一个 AutoConfigurationPackages.Registrar 注册类为程序指定了自动配置的包范围</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import</span>(AutoConfigurationPackages.Registrar.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AutoConfigurationPackage &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="first-spring-boot-application/微信截图_20181130001915.png" alt="register"></p>
-<p><img src="first-spring-boot-application/微信截图_20181130001106.png" alt="packagename"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181130001915.png" title="register">
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181130001106.png" title="packagename">
 <p> 由此可见，程序启动会扫描加载主程序类所在的包以及子包。这说明如果一个包位于主程序类所在包之外，是不会被 Spring 容器扫描实例化的。以下是简单的例子：</p>
 <p>AnotherController 位于 com.shinedeer.springboot 包之外</p>
-<p><img src="first-spring-boot-application/微信截图_20181130002413.png" alt="out"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181130002413.png" title="out">
 <p>通过浏览器访问 localhost:8080/another 请求，结果返回 404。</p>
-<p><img src="first-spring-boot-application/微信截图_20181130002533.png" alt="404"></p>
+<img src="/2018/11/29/first-spring-boot-application/微信截图_20181130002533.png" width="404">
 <h5 id="2-3-2-Import-AutoConfigurationImportSelector-class"><a href="#2-3-2-Import-AutoConfigurationImportSelector-class" class="headerlink" title="2.3.2 @Import(AutoConfigurationImportSelector.class)"></a>2.3.2 @Import(AutoConfigurationImportSelector.class)</h5><p>@Import 作用是导入所有自动配置场景</p>
 <p>AutoConfigurationImportSelector 会给容器中导入非常多的自动配置类，形如 <strong>XXXAutoConfiguration</strong> ，就是给容器中导入 starter 需要的组件并进行配置。 </p>
 <h2 id="四、相关-Demo"><a href="#四、相关-Demo" class="headerlink" title="四、相关 Demo"></a>四、相关 Demo</h2><ul>
@@ -321,7 +323,7 @@
         </div>
 
         <section class="meta">
-            <time class="time" itemprop="dateUpdated" datetime="2018-12-04T19:36:48+08:00" content="2018-12-04">
+            <time class="time" itemprop="dateUpdated" datetime="2018-12-04T20:00:58+08:00" content="2018-12-04">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：2018-12-04
             </time>

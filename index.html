@@ -163,106 +163,6 @@
 <section class="post-list">
     
         <div class="post-wrapper">
-            <article class="post reveal no-title">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/12/09/hexo-and-github-pages/">
-                
-                    2018-12-09
-                
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-09
-        </time>
-        
-
-    </section>
-
-    <section class="article typo">
-        <h1 id="Hexo-Github-Pages-搭建博客"><a href="#Hexo-Github-Pages-搭建博客" class="headerlink" title="Hexo + Github Pages 搭建博客"></a>Hexo + Github Pages 搭建博客</h1><h2 id="一、安装-Hexo"><a href="#一、安装-Hexo" class="headerlink" title="一、安装 Hexo"></a>一、安装 Hexo</h2><p>安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：</p>
-<ul>
-<li><a href="http://nodejs.org/" rel="external nofollow noopener noreferrer" target="_blank">Node.js</a></li>
-<li><a href="http://git-scm.com/" rel="external nofollow noopener noreferrer" target="_blank">Git</a></li>
-</ul>
-<p><img src="images/微信截图_20181202190954.png" alt="install"></p>
-<p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>安装完成后</p>
-<p><img src="images/微信截图_20181202191453.png" alt="cmd"></p>
-<p><img src="images/微信截图_20181202191408.png" alt="cli"></p>
-<h2 id="二、创建-Github-Pages"><a href="#二、创建-Github-Pages" class="headerlink" title="二、创建 Github Pages"></a>二、创建 Github Pages</h2><p>新建一个 repository，命名为 youraccount.github.com，然后点击 settings</p>
-<p><img src="images/微信截图_20181202194542.png" alt="settings"></p>
-<p>挑选一款还行的 theme，点击完成。</p>
-<p>访问 youraccount.github.io 看看效果（可能出现网络延迟，耐心等待效果~）</p>
-<p><img src="images/微信截图_20181202195403.png" alt="github io"></p>
-<h2 id="三、搭建本地-Hexo-服务器"><a href="#三、搭建本地-Hexo-服务器" class="headerlink" title="三、搭建本地 Hexo 服务器"></a>三、搭建本地 Hexo 服务器</h2><h3 id="1、初始化-hexo"><a href="#1、初始化-hexo" class="headerlink" title="1、初始化 hexo"></a>1、初始化 hexo</h3><p>在一个合适的目录下打开 git-bash 窗口</p>
-<p>执行以下命令 </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p><img src="images/微信截图_20181202232722.png" alt="init"></p>
-<p>我们后期写的博文都将以 markdown 格式编写，放在 source / _post 下</p>
-<p><img src="images/微信截图_20181202215531.png" alt="post"></p>
-<h3 id="2、启动-Hexo-服务器"><a href="#2、启动-Hexo-服务器" class="headerlink" title="2、启动 Hexo 服务器"></a>2、启动 Hexo 服务器</h3><p>我们执行以下命令将默认生成的 hello-world,md 博客发布在本地 Hexo 服务器上</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p><img src="images/微信截图_20181202215938.png" alt="hexo s"></p>
-<p>然后 在浏览器输入 localhost:4000 测试一下</p>
-<p><img src="images/微信截图_20181202220023.png" alt="localhost"></p>
-<h3 id="3、编写-md-博文"><a href="#3、编写-md-博文" class="headerlink" title="3、编写 md 博文"></a>3、编写 md 博文</h3><p>把我们自己编写的博文放在 _post 目录下</p>
-<p><img src="images/微信截图_20181202220429.png" alt="post"></p>
-<p>F5 一下，新发布的博文就显示出来了</p>
-<p><img src="images/微信截图_20181202220756.png" alt="new"></p>
-<p>p.s. 还有些小问题，如目录，标题，样式等暂不考虑</p>
-<h2 id="四、自定义主题"><a href="#四、自定义主题" class="headerlink" title="四、自定义主题"></a>四、自定义主题</h2><h3 id="1、下载自定义主题"><a href="#1、下载自定义主题" class="headerlink" title="1、下载自定义主题"></a>1、下载自定义主题</h3><p>Hexo 官网提供了很多优秀的 theme，有需要请戳 <a href="https://hexo.io/themes/" rel="external nofollow noopener noreferrer" target="_blank">这里</a> 。本文使用的主题是 <a href="https://xaoxuu.com/blog/" rel="external nofollow noopener noreferrer" target="_blank">material-x</a></p>
-<p>打开终端，cd 到你博客的路径，下载主题到 themes/ 文件夹</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/xaoxuu/hexo-theme-material-x themes/material-x</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/微信截图_20181202200305.png" alt="theme"></p>
-<p>然后在博客路径下安装依赖包</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content hexo-recommended-posts</span><br></pre></td></tr></table></figure>
-<p><img src="images/微信截图_20181202230032.png" alt="npm"></p>
-<h3 id="2、修改-config-yml"><a href="#2、修改-config-yml" class="headerlink" title="2、修改 _config.yml"></a>2、修改 _config.yml</h3><p>修改 _config.yml ，使得自定义 theme 生效</p>
-<p><img src="images/微信截图_20181202200645.png" alt="theme"></p>
-<h3 id="3、切换为自定义主题"><a href="#3、切换为自定义主题" class="headerlink" title="3、切换为自定义主题"></a>3、切换为自定义主题</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo.sh i x</span><br></pre></td></tr></table></figure>
-<p>如果提示 <code>command not found</code> ，说明你的电脑上还没有使用过 hexo.sh 脚本，那么可以执行下面这一段命令下载脚本然后应用主题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh'</span><br></pre></td></tr></table></figure>
-<p>此时再 <code>hexo s</code> 一下，自定义主题就生效了。</p>
-<p><img src="images/微信截图_20181202230125.png" alt="localhost"></p>
-<h3 id="4、生成博文"><a href="#4、生成博文" class="headerlink" title="4、生成博文"></a>4、生成博文</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<p><img src="images/微信截图_20181202235549.png" alt="public"></p>
-<h2 id="五、发布到-Github-Pages"><a href="#五、发布到-Github-Pages" class="headerlink" title="五、发布到 Github Pages"></a>五、发布到 Github Pages</h2><p>首先从 Github clone 下 Github Pages</p>
-<p><img src="images/微信截图_20181202234009.png" alt="pages"></p>
-<p>将需要提交的文件夹从 本地 hexo 拷贝到 github pages 本地仓库</p>
-<p><img src="images/微信截图_20181203000034.png" alt="Local"></p>
-<p>使用 git add 和 git commit 提交到本地仓库</p>
-<p><img src="images/微信截图_20181203000154.png" alt="git push"></p>
-<p> 使用 git push 推送到远程仓库</p>
-<p><img src="images/微信截图_20181202234720.png" alt="push"></p>
-<p>现在输入 <a href="https://calvinhwang123.github.io">https://calvinhwang123.github.io</a> 访问一下</p>
-<p><img src="images/微信截图_20181203194736.png" alt="github"></p>
-<p>这样我们自定义主题就算完成了。</p>
-<h2 id="六、修改-Material-X-主题配置"><a href="#六、修改-Material-X-主题配置" class="headerlink" title="六、修改 Material X 主题配置"></a>六、修改 Material X 主题配置</h2><p>在 themes / material-x / _config.yml 里这样一段说明</p>
-<p><img src="images/微信截图_20181203201817.png" alt="themes"></p>
-<p>所以我们把配置搬到 blogpath / _config.yml 里面</p>
-<p><img src="images/微信截图_20181203202009.png" alt="main"></p>
-<p>以上的配置配合注释基本没什么问题。</p>
-<p>还有一部分主题配置可以直接在 material-x 的 _config.yml 下设置，如：网易云歌单等。</p>
-<h2 id="七、使用-hexo-deployer-git-插件更新博客"><a href="#七、使用-hexo-deployer-git-插件更新博客" class="headerlink" title="七、使用 hexo-deployer-git 插件更新博客"></a>七、使用 hexo-deployer-git 插件更新博客</h2><p>我们发现每次都手动往 Github Pages 更新博客太麻烦了，通过 <code>hexo-deployer-git</code> 插件可以方便地更新博客</p>
-<p><img src="images/微信截图_20181203204820.png" alt="deploy"></p>
-<h2 id="七、参考文献"><a href="#七、参考文献" class="headerlink" title="七、参考文献"></a>七、参考文献</h2><ul>
-<li><a href="https://hexo.io/zh-cn/" rel="external nofollow noopener noreferrer" target="_blank">Hexo 官网</a></li>
-<li><a href="https://blog.csdn.net/qibin0506/article/details/51813428" rel="external nofollow noopener noreferrer" target="_blank">利用 githubpages 创建你的个人博客</a></li>
-<li><a href="https://xaoxuu.com/wiki/material-x/" rel="external nofollow noopener noreferrer" target="_blank">Material X</a></li>
-<li><a href="https://xaoxuu.com/blog/2017-07-05-hexo-blog/" rel="external nofollow noopener noreferrer" target="_blank">如何搭建基于 Hexo 的独立博客</a></li>
-</ul>
-
-        
-
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class="post-wrapper">
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
@@ -325,7 +225,7 @@
     
     <div class="cats">
         <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-        <a class="categories" href="/categories/Git-GitHub/">Git GitHub</a>
+        <a class="categories" href="/categories/Git/">Git</a> / <a class="categories" href="/categories/Git/GitHub/">GitHub</a>
     </div>
 
 
@@ -350,6 +250,58 @@
                     <a href="/tags/Git/"><i class="fas fa-tag fa-fw"></i>&nbsp;Git</a>
                 
                     <a href="/tags/GitHub/"><i class="fas fa-tag fa-fw"></i>&nbsp;GitHub</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class="post-wrapper">
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2018/12/02/hexo-and-github-pages/">
+                
+                    Hexo + Github Pages 搭建博客
+                
+            </a>
+        </h2>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-12-02
+        </time>
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        <a class="categories" href="/categories/Hexo/">Hexo</a> / <a class="categories" href="/categories/Hexo/GitHub/">GitHub</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+        <h2 id="一、安装-Hexo"><a href="#一、安装-Hexo" class="headerlink" title="一、安装 Hexo"></a>一、安装 Hexo</h2><p>安装 Hexo 相当简单。然而在安装前，您必须检查电脑中是否已安装下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/" rel="external nofollow noopener noreferrer" target="_blank">Node.js</a></li>
+<li><a href="http://git-scm.com/" rel="external nofollow noopener noreferrer" target="_blank">Git</a></li>
+</ul>
+        
+            <div class="readmore">
+                <a href="/2018/12/02/hexo-and-github-pages/" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/GitHub/"><i class="fas fa-tag fa-fw"></i>&nbsp;GitHub</a>
+                
+                    <a href="/tags/Hexo/"><i class="fas fa-tag fa-fw"></i>&nbsp;Hexo</a>
                 
             </div>
         
@@ -509,7 +461,13 @@
         
             <ul class="entry">
                 
-                    <li><a class="flat-box" href="/categories/Git-GitHub/"><div class="name">Git GitHub</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Git/"><div class="name">Git</div><div class="badge">1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/Git/GitHub/"><div class="name">GitHub</div><div class="badge">1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/Hexo/GitHub/"><div class="name">GitHub</div><div class="badge">1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/Hexo/"><div class="name">Hexo</div><div class="badge">1</div></a></li>
                 
                     <li><a class="flat-box" href="/categories/Spring-Boot/"><div class="name">Spring Boot</div><div class="badge">3</div></a></li>
                 
@@ -526,7 +484,7 @@
             <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         </header>
         <div class="content pure">
-            <a href="/tags/Git/" style="font-size: 14px; color: #999">Git</a> <a href="/tags/GitHub/" style="font-size: 14px; color: #999">GitHub</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a>
+            <a href="/tags/Git/" style="font-size: 14px; color: #999">Git</a> <a href="/tags/GitHub/" style="font-size: 19px; color: #777">GitHub</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #999">Hexo</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a>
         </div>
     </section>
 

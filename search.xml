@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Spring Boot 日志</title>
+      <link href="/2018/12/06/spring-boot-logging/"/>
+      <url>/2018/12/06/spring-boot-logging/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、日志门面与日志实现"><a href="#一、日志门面与日志实现" class="headerlink" title="一、日志门面与日志实现"></a>一、日志门面与日志实现</h2><p>市场上存在非常多的日志框架，如：<code>JUL(java.util.logging)</code>、<code>JCL(Apache Commons Logging)</code>、<code>Log4j</code>、<code>Log4j2</code>、<code>Logback</code>、<code>slf4j</code>和<code>jboss-logging</code>等。spring-boot-starter-logging 采用了 slf4j + logback 的形式，Spring Boot 也能自动配置 (JUL, log4j2, logback) 并简化配置。</p><a id="more"></a><p>以上几款日志框架分为日志门面与日志实现，关系大致如下：</p><table><thead><tr><th>日志门面</th><th>日志实现</th></tr></thead><tbody><tr><td>JCL, slf4j, jboss-logging</td><td>JUL, log4j, log4j2, logback</td></tr></tbody></table><h2 id="二、Spring-Boot-默认日志实现"><a href="#二、Spring-Boot-默认日志实现" class="headerlink" title="二、Spring Boot 默认日志实现"></a>二、Spring Boot 默认日志实现</h2><p>我们新建一个最简单 Spring Boot Maven 工程，使用 IDEA 生成 Maven 依赖树如下：</p><img src="/2018/12/06/spring-boot-logging/微信截图_20181206200830.png" title="logging"><p>我们可以看到，spring-boot-start 依赖了 spring-boot-start-logging ，而不管是 log4j ，jul 还是 logback，最终都实现了 slf4j 门面。</p><p>对于如何将 log4j， jul 等转换为 slf4 实现，可以参考 slf4j <a href="https://www.slf4j.org/manual.html" rel="external nofollow noopener noreferrer" target="_blank">官网</a></p><p><img src="https://www.slf4j.org/images/concrete-bindings.png" alt="manual"></p><ul><li><p>Spring 框架默认使用 JCL</p></li><li><p>Spring Boot 选用的门面与实现是 slf4j 和 logback</p></li></ul><blockquote><p>Spring Boot 能自动适配所有的日志，而且底层使用的是 slf4j + logback 的方式记录日志，引入其他框架的时候，只要把这个框架依赖的日志框架排除掉即可。</p></blockquote><h2 id="三、Spring-Boot-中日志使用"><a href="#三、Spring-Boot-中日志使用" class="headerlink" title="三、Spring Boot 中日志使用"></a>三、Spring Boot 中日志使用</h2><h3 id="1、日志级别"><a href="#1、日志级别" class="headerlink" title="1、日志级别"></a>1、日志级别</h3><p>Spring Boot slf4j 共有 5 个级别的日志输出，从低到高分别为：track, debug, info, warn, error。默认输出的级别为 info，采用由低到高的过滤方式，因此可以输出的级别为 info, warn 和 error。</p><img src="/2018/12/06/spring-boot-logging/微信截图_20181206202535.png" title="logconsole"><h3 id="2、修改默认日志配置"><a href="#2、修改默认日志配置" class="headerlink" title="2、修改默认日志配置"></a>2、修改默认日志配置</h3><p>我们可以在 application.propertites 内修改日志配置</p><img src="/2018/12/06/spring-boot-logging/微信截图_20181206203352.png" title="level"><p>如图，我们可以修改指定 package 下日志输出级别。</p><p>默认情况下，日志只能在 console 上呈现输出，如果要实现日志的永久保存，我们可以考虑以文件方式存储。使用 logging.file 和 logging.path 来指定文件名和日志路径（一般两个配置不混用）</p><img src="/2018/12/06/spring-boot-logging/微信截图_20181206204253.png" title="logging"><h2 id="四、本文-Demo"><a href="#四、本文-Demo" class="headerlink" title="四、本文 Demo"></a>四、本文 Demo</h2><p><a href="https://github.com/CalvinHwang123/IdeaProjects/tree/master/_003-spring-boot-logging" rel="external nofollow noopener noreferrer" target="_blank">占位符</a></p><h2 id="五、参考文献"><a href="#五、参考文献" class="headerlink" title="五、参考文献"></a>五、参考文献</h2><ul><li>尚硅谷 Spring Boot 核心技术篇 <a href="http://www.atguigu.com/" rel="external nofollow noopener noreferrer" target="_blank">官网</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring Boot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring Boot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Spring Boot 自动配置</title>
       <link href="/2018/11/30/spring-boot-auto-config/"/>
       <url>/2018/11/30/spring-boot-auto-config/</url>

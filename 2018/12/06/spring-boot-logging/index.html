@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives | codingの鹿先生</title>
+  <title>Spring Boot 日志 | codingの鹿先生</title>
   
   <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -158,55 +158,182 @@
     <div class="l_body">
     <div class="container clearfix">
         <div class="l_main">
-            
-  <article id="archive-page" class="post article white-box">
-    <section class="archive">
-      
-            <div class="archive-item archive-year mark">
-                <h2>
-                    2018
-                </h2>
-                <hr>
-            </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/12/06/spring-boot-logging/">
-              <time>12-06</time>
-              <span class="title">
-                
-                    Spring Boot 日志
-                
-              </span>
-            </a>
+            <article id="post-spring-boot-logging" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+    <section class="meta">
+        
+            <h1 class="title">Spring Boot 日志</h1>
+        
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            2018-12-06
+        </time>
+        
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
           </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/11/30/spring-boot-auto-config/">
-              <time>11-30</time>
-              <span class="title">
-                
-                    Spring Boot 自动配置
-                
-              </span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/11/29/first-spring-boot-application/">
-              <time>11-29</time>
-              <span class="title">
-                
-                    第一个 Spring Boot APP
-                
-              </span>
-            </a>
-          </div>
-      
+        
+
+        
+    
+    <div class="cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        <a class="categories" href="/categories/Spring-Boot/">Spring Boot</a>
+    </div>
+
+
     </section>
-  </article>
-  <!--
-  
-    -->
+
+    <section class="article typo">
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="一、日志门面与日志实现"><a href="#一、日志门面与日志实现" class="headerlink" title="一、日志门面与日志实现"></a>一、日志门面与日志实现</h2><p>市场上存在非常多的日志框架，如：<code>JUL(java.util.logging)</code>、<code>JCL(Apache Commons Logging)</code>、<code>Log4j</code>、<code>Log4j2</code>、<code>Logback</code>、<code>slf4j</code>和<code>jboss-logging</code>等。spring-boot-starter-logging 采用了 slf4j + logback 的形式，Spring Boot 也能自动配置 (JUL, log4j2, logback) 并简化配置。</p>
+<a id="more"></a>
+<p>以上几款日志框架分为日志门面与日志实现，关系大致如下：</p>
+<table>
+<thead>
+<tr>
+<th>日志门面</th>
+<th>日志实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JCL, slf4j, jboss-logging</td>
+<td>JUL, log4j, log4j2, logback</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二、Spring-Boot-默认日志实现"><a href="#二、Spring-Boot-默认日志实现" class="headerlink" title="二、Spring Boot 默认日志实现"></a>二、Spring Boot 默认日志实现</h2><p>我们新建一个最简单 Spring Boot Maven 工程，使用 IDEA 生成 Maven 依赖树如下：</p>
+<img src="/2018/12/06/spring-boot-logging/微信截图_20181206200830.png" title="logging">
+<p>我们可以看到，spring-boot-start 依赖了 spring-boot-start-logging ，而不管是 log4j ，jul 还是 logback，最终都实现了 slf4j 门面。</p>
+<p>对于如何将 log4j， jul 等转换为 slf4 实现，可以参考 slf4j <a href="https://www.slf4j.org/manual.html" rel="external nofollow noopener noreferrer" target="_blank">官网</a></p>
+<p><img src="https://www.slf4j.org/images/concrete-bindings.png" alt="manual"></p>
+<ul>
+<li><p>Spring 框架默认使用 JCL</p>
+</li>
+<li><p>Spring Boot 选用的门面与实现是 slf4j 和 logback</p>
+</li>
+</ul>
+<blockquote>
+<p>Spring Boot 能自动适配所有的日志，而且底层使用的是 slf4j + logback 的方式记录日志，引入其他框架的时候，只要把这个框架依赖的日志框架排除掉即可。</p>
+</blockquote>
+<h2 id="三、Spring-Boot-中日志使用"><a href="#三、Spring-Boot-中日志使用" class="headerlink" title="三、Spring Boot 中日志使用"></a>三、Spring Boot 中日志使用</h2><h3 id="1、日志级别"><a href="#1、日志级别" class="headerlink" title="1、日志级别"></a>1、日志级别</h3><p>Spring Boot slf4j 共有 5 个级别的日志输出，从低到高分别为：track, debug, info, warn, error。默认输出的级别为 info，采用由低到高的过滤方式，因此可以输出的级别为 info, warn 和 error。</p>
+<img src="/2018/12/06/spring-boot-logging/微信截图_20181206202535.png" title="logconsole">
+<h3 id="2、修改默认日志配置"><a href="#2、修改默认日志配置" class="headerlink" title="2、修改默认日志配置"></a>2、修改默认日志配置</h3><p>我们可以在 application.propertites 内修改日志配置</p>
+<img src="/2018/12/06/spring-boot-logging/微信截图_20181206203352.png" title="level">
+<p>如图，我们可以修改指定 package 下日志输出级别。</p>
+<p>默认情况下，日志只能在 console 上呈现输出，如果要实现日志的永久保存，我们可以考虑以文件方式存储。使用 logging.file 和 logging.path 来指定文件名和日志路径（一般两个配置不混用）</p>
+<img src="/2018/12/06/spring-boot-logging/微信截图_20181206204253.png" title="logging">
+<h2 id="四、本文-Demo"><a href="#四、本文-Demo" class="headerlink" title="四、本文 Demo"></a>四、本文 Demo</h2><p><a href="https://github.com/CalvinHwang123/IdeaProjects/tree/master/_003-spring-boot-logging" rel="external nofollow noopener noreferrer" target="_blank">占位符</a></p>
+<h2 id="五、参考文献"><a href="#五、参考文献" class="headerlink" title="五、参考文献"></a>五、参考文献</h2><ul>
+<li>尚硅谷 Spring Boot 核心技术篇 <a href="http://www.atguigu.com/" rel="external nofollow noopener noreferrer" target="_blank">官网</a></li>
+</ul>
+
+        </div>
+
+        <section class="meta">
+            <time class="time" itemprop="dateUpdated" datetime="2018-12-09T19:04:32+08:00" content="2018-12-09">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：2018-12-09
+            </time>
+            
+                
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <a class="tag" href="/tags/Spring-Boot/">Spring Boot</a>
+                </div>
+            
+        </section>
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/11/30/spring-boot-auto-config/" rel="prev" title="Spring Boot 自动配置">
+                                    
+                                        Spring Boot 自动配置
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <a class="tag" href="/tags/Spring-Boot/">Spring Boot</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            
+                
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
+        <ul>
+            
+                <li><a href="https://calvinhwang123.github.io/2018/11/30/spring-boot-auto-config/">Spring Boot 自动配置</a></li>
+            
+                <li><a href="https://calvinhwang123.github.io/2018/11/29/first-spring-boot-application/">第一个 Spring Boot APP</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+                
+
+                
+
+                
+                    
+                        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
+                        <div class="subtitle">
+                          <h6><b>文明评论，请勿灌水。</b>为了便于区分和接收回复提醒，请您在留言时填写一下<b>昵称</b>和<b>邮箱</b>。
+                          不定期清理没有昵称和灌水的评论。</h6>
+                        <div>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                <i class="fas fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                    
+                
+            
+
+        </div></div></section>
+    </article>
+
+
+<script>
+    window.subData = {
+        title: 'Spring Boot 日志',
+        tools: true
+    }
+</script>
 
 
         </div>
@@ -287,6 +414,16 @@
     
     
         
+    <section class="m_widget toc-wrapper">
+        <header class="header pure">
+            <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class="wrapper"><a class="s-toc rightBtn" title="固定到顶部" target="_blank" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+        </header>
+        <div class="content pure">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、日志门面与日志实现"><span class="toc-text">一、日志门面与日志实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Spring-Boot-默认日志实现"><span class="toc-text">二、Spring Boot 默认日志实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Spring-Boot-中日志使用"><span class="toc-text">三、Spring Boot 中日志使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、日志级别"><span class="toc-text">1、日志级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、修改默认日志配置"><span class="toc-text">2、修改默认日志配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、本文-Demo"><span class="toc-text">四、本文 Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、参考文献"><span class="toc-text">五、参考文献</span></a></li></ol>
+        </div>
+    </section>
+
 
     
     
@@ -387,6 +524,35 @@
 <script src="/js/search.js"></script>
 <script src="/js/app.js"></script>
 
+
+    
+    
+    
+        
+            <script>
+            var GUEST_INFO = ['nick','mail','link'];
+            var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+                return GUEST_INFO.indexOf(item) > -1
+            });
+            var notify = 'false' == true;
+            var verify = 'false' == true;
+            var valine = new Valine();
+            valine.init({
+                el: '#valine_container',
+                notify: notify,
+                verify: verify,
+                guest_info: guest_info,
+                appId: "DtrTjT4L20pTc9V0DBQ8Pdvm-gzGzoHsz",
+                appKey: "AHWyAPy0c6tHrNohGEcPjpMX",
+                placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+                pageSize:'10',
+                avatar:'mp',
+                lang:'zh-cn',
+                highlight:''
+            })
+            </script>
+        
+    
 
 
 

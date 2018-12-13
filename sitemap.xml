@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://calvinhwang123.github.io/2018/12/11/spring-boot-customize-error/</loc>
+    
+    <lastmod>2018-12-13T13:23:47.141Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://calvinhwang123.github.io/2018/12/11/spring-boot-login-interceptor/</loc>
     
     <lastmod>2018-12-11T14:57:19.282Z</lastmod>
